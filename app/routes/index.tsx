@@ -13,8 +13,12 @@ type AlgoliaWrapperProps = {
 function AlgoliaWrapper({ propToForceRerender }: AlgoliaWrapperProps) {
   const appId = "RHVCHJW67L";
   const indexName = "demo_content";
+  // It's okay for this key to be public
   const apiKey = "5e56001b6c4b76edb3d2b69ca5951b75";
   const [searchClient] = useState(algoliasearch(appId, apiKey));
+
+  // Basic initialUiState
+  // This gets used on the first render, but seems to be ignored on the second render (even though it's still here and passed as a prop as usual)
   const initialUiState = {
     [indexName]: {
       refinementList: {
